@@ -1,25 +1,19 @@
 package script_for_portal;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
 
-
 public class PortalGradeScript {
-
-    private static String fileNameToStoreGradeReport = ".\\src\\script_for_portal\\GradeReport.txt";
 
     public static void main(String[] args) {
         System.setProperty("webdriver.gecko.driver", "C:\\Gecko\\geckodriver.exe");
         FirefoxDriver driver = new FirefoxDriver();
-
 
         String baseUrl = "https://portal.aait.edu.et";
         String gradeReportUrl = "https://portal.aait.edu.et/Grade/GradeReport";
@@ -64,6 +58,8 @@ public class PortalGradeScript {
     }
 
     private static void writeToFile(String content) {
+        String fileNameToStoreGradeReport = ".\\src\\script_for_portal\\GradeReport.txt";
+
         try {
             Writer writer = new FileWriter(fileNameToStoreGradeReport);
             writer.write(content);
