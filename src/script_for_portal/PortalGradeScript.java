@@ -5,14 +5,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
+
 
 
 public class PortalGradeScript {
 
+    private static String fileNameToStoreGradeReport = ".\\src\\script_for_portal\\GradeReport.txt";
+
     public static void main(String[] args) {
         System.setProperty("webdriver.gecko.driver", "C:\\Gecko\\geckodriver.exe");
         FirefoxDriver driver = new FirefoxDriver();
+
 
         String baseUrl = "https://portal.aait.edu.et";
         String gradeReportUrl = "https://portal.aait.edu.et/Grade/GradeReport";
@@ -36,15 +43,34 @@ public class PortalGradeScript {
         //finding all tr elements in the page
         List<WebElement> rows = driver.findElements(By.tagName("tr"));
 
+        //declaring a string builder to store the grade report
+        StringBuilder gradeReport;
+        gradeReport = new StringBuilder();
+
+        //traversing each row and printing values
         for (WebElement  row:
              rows) {
             for (WebElement td:
                  row.findElements(By.tagName("td"))) {
-                System.out.print(td.getText() + "  ");
+                 gradeReport.append(td.getText()).append("  ");
             }
-            System.out.println();
+            gradeReport.append("\n");
         }
 
+        //writing to a file
+        writeToFile(gradeReport.toString());
+
         driver.close();
+    }
+
+    private static void writeToFile(String content) {
+        try {
+            Writer writer = new FileWriter(fileNameToStoreGradeReport);
+            writer.write(content);
+            writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
