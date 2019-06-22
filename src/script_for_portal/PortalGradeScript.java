@@ -23,13 +23,9 @@ public class PortalGradeScript {
         driver.get(baseUrl);
 
         //signing into my account
-        WebElement usernameTextBox = driver.findElement(By.id("UserName"));
-        WebElement passwordTextBox = driver.findElement(By.id("Password"));
-        WebElement loginButton = driver.findElement(By.className("btn-success"));
-
-        usernameTextBox.sendKeys(myUsername);
-        passwordTextBox.sendKeys(myPassword);
-        loginButton.click();
+        driver.findElement(By.id("UserName")).sendKeys(myUsername);
+        driver.findElement(By.id("Password")).sendKeys(myPassword);
+        driver.findElement(By.className("btn-success")).click();
 
         //go to grade report page
         driver.navigate().to(gradeReportUrl);
