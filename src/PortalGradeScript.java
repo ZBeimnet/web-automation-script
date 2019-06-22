@@ -16,7 +16,7 @@ public class PortalGradeScript {
         String baseUrl = "https://portal.aait.edu.et";
         String gradeReportUrl = "https://portal.aait.edu.et/Grade/GradeReport";
         String myUsername = "ATR/8563/09";
-        String myPassword = "2234";
+        String myPassword = "enter your password here";
 
         driver.get(baseUrl);
 
@@ -35,7 +35,7 @@ public class PortalGradeScript {
         StringBuilder gradeReport;
         gradeReport = new StringBuilder();
 
-        //traversing each row and printing values
+        //traversing each row and appending values
         for (WebElement  row:
              rows) {
             for (WebElement td:
