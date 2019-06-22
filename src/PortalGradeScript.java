@@ -1,5 +1,3 @@
-package script_for_portal;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -54,7 +52,7 @@ public class PortalGradeScript {
     }
 
     private static void writeToFile(String content) {
-        String fileNameToStoreGradeReport = ".\\src\\script_for_portal\\GradeReport.txt";
+        String fileNameToStoreGradeReport = ".\\src\\GradeReport.txt";
 
         try {
             Writer writer = new FileWriter(fileNameToStoreGradeReport);
